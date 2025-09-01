@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Click Counter</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin-top: 50px; background-color: rgb(207 232 220);
+       
+      }
+      #count {
+        font-size: 2em;
+        margin-bottom: 10px;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 1em;background-color:green;
+        background-color:green;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="count">0</div>
+    <button id="btn">Click Me!</button>
+   
+
+    <script>
+      // Access the display and button elements
+      const counterDisplay = document.getElementById('count');
+      const button = document.getElementById('btn');
+      let count = 0;
+     
+
+      // Add event listener to the button
+      button.addEventListener('click', function() {
+        count = count + 1; // or count++
+        counterDisplay.innerText = count;
+      });
+    </script>
+  </body>
+</html>
+
+
