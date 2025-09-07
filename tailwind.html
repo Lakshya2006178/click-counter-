@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simple Cosmic Clicker</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap');
+    .orbitron {
+      font-family: 'Orbitron', monospace;
+    }
+    .float {
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+  </style>
+</head>
+<body
+  class="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-500 flex items-center justify-center"
+>
+  <div class="text-center space-y-8">
+    <!-- Floating Title -->
+    <h1
+      class="orbitron text-6xl font-black bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent float"
+    >
+      COSMIC CLICKER
+    </h1>
+    <!-- Counter -->
+    <div
+      id="count"
+      class="orbitron text-8xl font-black text-white mb-6 transition-all duration-300"
+    >
+      0
+    </div>
+    <!-- Best Score -->
+    <div
+      class="bg-white/20 backdrop-blur-sm rounded-2xl px-6 py-2 inline-block"
+    >
+      <span class="text-white/80 orbitron text-sm">Best: </span>
+      <span class="text-yellow-300 orbitron font-bold text-lg" id="best"
+        >0</span
+      >
+    </div>
+    <!-- Buttons -->
+    <div class="space-y-4">
+      <button
+        id="btn"
+        class="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-bold py-4 px-8 rounded-xl text-xl orbitron transition-all duration-200 transform hover:scale-110 active:scale-95 shadow-lg"
+      >
+        🚀 CLICK ME!
+      </button>
+      <br />
+      <button
+        id="reset"
+        class="bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white font-bold py-3 px-6 rounded-lg orbitron transition-all duration-200 transform hover:scale-105"
+      >
+        🔄 RESET
+      </button>
+    </div>
+  </div>
+  <script>
+    const counter = document.getElementById('count');
+    const btn = document.getElementById('btn');
+    const reset = document.getElementById('reset');
+    const best = document.getElementById('best');
+    let count = 0;
+    let bestScore = 0;
+    btn.addEventListener('click', () => {
+      count++;
+      counter.textContent = count;
+      // Animation
+      counter.classList.add('scale-125');
+      setTimeout(() => counter.classList.remove('scale-125'), 200);
+      // Color changes
+      if (count >= 30) {
+        counter.className =
+          'orbitron text-8xl font-black mb-6 transition-all duration-300 text-pink-400';
+      } else if (count >= 20) {
+        counter.className =
+          'orbitron text-8xl font-black mb-6 transition-all duration-300 text-yellow-400';
+      } else if (count >= 10) {
+        counter.className =
+          'orbitron text-8xl font-black mb-6 transition-all duration-300 text-green-400';
+      } else {
+        counter.className =
+          'orbitron text-8xl font-black mb-6 transition-all duration-300 text-white';
+      }
+      // Update best score
+      if (count > bestScore) {
+        bestScore = count;
+        best.textContent = bestScore;
+        // Celebration effect
+        best.classList.add('animate-bounce');
+        setTimeout(() => best.classList.remove('animate-bounce'), 1000);
+      }
+    });
+    reset.addEventListener('click', () => {
+      count = 0;
+      counter.textContent = count;
+      counter.className =
+        'orbitron text-8xl font-black mb-6 transition-all duration-300 text-white';
+    });
+  </script>
+</body>
+</html>
