@@ -77,10 +77,10 @@
     btn.addEventListener('click', () => {
       count++;
       counter.textContent = count;
-      // Animation
+      
       counter.classList.add('scale-125');
       setTimeout(() => counter.classList.remove('scale-125'), 200);
-      // Color changes
+      
       if (count >= 30) {
         counter.className =
           'orbitron text-8xl font-black mb-6 transition-all duration-300 text-pink-400';
@@ -94,11 +94,11 @@
         counter.className =
           'orbitron text-8xl font-black mb-6 transition-all duration-300 text-white';
       }
-      // Update best score
+    
       if (count > bestScore) {
         bestScore = count;
         best.textContent = bestScore;
-        // Celebration effect
+    
         best.classList.add('animate-bounce');
         setTimeout(() => best.classList.remove('animate-bounce'), 1000);
       }
@@ -111,4 +111,5 @@
     });
   </script>
 </body>
+
 </html>
